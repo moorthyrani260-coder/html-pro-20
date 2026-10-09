@@ -1,116 +1,223 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Complete a Form</title>
+    <title>Customer Survey Form</title>
 
     <style>
-
-        /* =========================================
-           COMPLETE THE CSS
-           ========================================= */
-
         * {
-            /* Reset margin and padding */
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         body {
-            /* Set font */
-            /* Set width */
-            /* Center the page */
-            /* Add padding */
-            /* Add border */
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #eef5f0;
+            padding: 30px 15px;
+            color: #26352b;
+        }
+
+        form {
+            max-width: 550px;
+            margin: 0 auto;
+            padding: 30px;
+            background-color: white;
+            border: 1px solid #d5e5d8;
+            border-radius: 12px;
+            box-shadow: 0 5px 18px rgba(0, 0, 0, 0.1);
         }
 
         h1 {
-            /* Set color */
-            /* Set font size */
+            color: #247447;
+            font-size: 180%;
+            margin-bottom: 25px;
+            text-align: center;
         }
 
         h2 {
-            /* Set font size */
-            /* Set vertical padding */
+            color: #247447;
+            font-size: 115%;
+            padding: 12px 0;
+            margin: 12px 0;
+            border-bottom: 1px solid #d5e5d8;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
         }
 
         label {
-            /* Set color */
-            /* Float labels */
-            /* Set width */
-            /* Make labels bold */
-            /* Align text */
+            display: block;
+            font-weight: bold;
+            margin-bottom: 6px;
+            color: #344b3a;
         }
 
-        input {
-            /* Set width */
-            /* Set margin */
+        input[type="email"],
+        input[type="text"] {
+            width: 100%;
+            padding: 11px;
+            border: 1px solid #b8c9bc;
+            border-radius: 6px;
+            font-size: 100%;
+            background-color: #fcfefd;
+        }
+
+        input[type="email"]:focus,
+        input[type="text"]:focus {
+            outline: 2px solid #70b58b;
+            border-color: #247447;
+        }
+
+        .checkbox-group {
+            margin: 10px 0;
+        }
+
+        .checkbox-group label {
+            display: inline;
+            font-weight: normal;
+            cursor: pointer;
         }
 
         input[type="checkbox"] {
-            /* Set checkbox width */
+            margin-right: 8px;
+            accent-color: #247447;
         }
 
-        input:required,
-        input:invalid {
-            /* Remove browser shadow */
+        .buttons {
+            display: flex;
+            gap: 12px;
+            margin-top: 25px;
         }
 
-        #button,
-        #reset {
-            /* Set width */
-            /* Set background */
-            /* Add shadow */
+        input[type="submit"],
+        input[type="reset"] {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            font-size: 100%;
+            font-weight: bold;
+            cursor: pointer;
         }
 
-        #button {
-            /* Position submit button */
+        input[type="submit"] {
+            background-color: #247447;
+            color: white;
         }
 
+        input[type="submit"]:hover {
+            background-color: #185a34;
+        }
+
+        input[type="reset"] {
+            background-color: #e3e9e4;
+            color: #26352b;
+        }
+
+        input[type="reset"]:hover {
+            background-color: #cdd8cf;
+        }
+
+        .thank-you {
+            text-align: center;
+            margin-top: 25px;
+            color: #247447;
+            font-size: 110%;
+        }
+
+        @media screen and (max-width: 480px) {
+            form {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 150%;
+            }
+        }
     </style>
 </head>
 
 <body>
 
-    <h1>Please complete our survey</h1>
-
     <form name="myform" action="survey_data.html" method="get">
 
-        <h2>Contact information</h2>
+        <h1>Customer Survey</h1>
 
-        <!-- Email field -->
+        <h2>Contact Information</h2>
 
-        <!-- First name field -->
+        <div class="form-group">
+            <label for="email">Email Address:</label>
+            <input type="email" name="email" id="email"
+                   autocomplete="email" autofocus required>
+        </div>
 
-        <!-- Last name field -->
+        <div class="form-group">
+            <label for="firstname">First Name:</label>
+            <input type="text" name="firstname" id="firstname"
+                   autocomplete="given-name" required>
+        </div>
 
+        <div class="form-group">
+            <label for="lastname">Last Name:</label>
+            <input type="text" name="lastname" id="lastname"
+                   autocomplete="family-name" required>
+        </div>
 
-        <h2>Geographic information</h2>
+        <h2>Geographic Information</h2>
 
-        <!-- State field -->
+        <div class="form-group">
+            <label for="state">State:</label>
+            <input type="text" name="state" id="state"
+                   placeholder="Two characters"
+                   pattern="[A-Za-z]{2}"
+                   title="Enter exactly two letters"
+                   maxlength="2" required>
+        </div>
 
-        <!-- Zip code field -->
+        <div class="form-group">
+            <label for="zip">ZIP Code:</label>
+            <input type="text" name="zip" id="zip"
+                   placeholder="Five digits"
+                   pattern="[0-9]{5}"
+                   title="Enter exactly five digits"
+                   maxlength="5" required>
+        </div>
 
+        <h2>How Did You Hear About Us?</h2>
 
-        <h2>How did you hear about us?</h2>
+        <div class="checkbox-group">
+            <input type="checkbox" name="web" id="web" value="web">
+            <label for="web">Web Search</label>
+        </div>
 
-        <!-- Web Search checkbox -->
+        <div class="checkbox-group">
+            <input type="checkbox" name="facebook" id="facebook" value="facebook">
+            <label for="facebook">Facebook</label>
+        </div>
 
-        <!-- Facebook checkbox -->
+        <div class="checkbox-group">
+            <input type="checkbox" name="twitter" id="twitter" value="twitter">
+            <label for="twitter">Twitter</label>
+        </div>
 
-        <!-- Twitter checkbox -->
+        <div class="checkbox-group">
+            <input type="checkbox" name="message" id="message" value="message">
+            <label for="message">Email Message</label>
+        </div>
 
-        <!-- Email message checkbox -->
+        <h2 class="thank-you">Thank You for Taking Our Survey!</h2>
 
-
-        <h2>Thank you for taking our survey!</h2>
-
-        <!-- Submit button -->
-
-        <!-- Reset button -->
+        <div class="buttons">
+            <input type="submit" name="register" value="Submit">
+            <input type="reset" name="reset" value="Clear Form">
+        </div>
 
     </form>
 
 </body>
-
 </html>
